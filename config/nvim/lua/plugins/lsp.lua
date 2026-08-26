@@ -35,7 +35,13 @@ return {
 
       require("mason-lspconfig").setup({
         ensure_installed = servers,
-        automatic_enable = true, -- 導入済みサーバに対して vim.lsp.enable を呼ぶ
+        -- 導入済みサーバに対して vim.lsp.enable を呼ぶ。
+        --
+        -- ただし stylua は除外する。stylua は下の mason-tool-installer で
+        -- 「conform 用のフォーマッタ」として入れているが、nvim-lspconfig には
+        -- `stylua --lsp` を起動する同名のサーバ定義があるため、
+        -- 何もしないと LSP としても起動してしまい整形要求が二重になる。
+        automatic_enable = { exclude = { "stylua" } },
       })
 
       -- LSP ではないツール (フォーマッタ) もここで揃える
