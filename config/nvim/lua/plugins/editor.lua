@@ -13,7 +13,7 @@ return {
         { "<Leader>b", group = "バッファ" },
         { "<Leader>f", group = "検索 (Telescope)" },
         { "<Leader>G", group = "Git" },
-        { "<Leader>t", group = "ターミナル" },
+        { "<Leader>t", group = "ターミナル / ツリー" },
         { "<Leader>c", group = "コード (LSP)" },
       },
     },

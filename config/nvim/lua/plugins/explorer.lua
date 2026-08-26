@@ -8,6 +8,17 @@ return {
     { "<Leader>tr", "<cmd>NvimTreeToggle<cr>", desc = "ファイルツリー" },
     { "<Leader>tf", "<cmd>NvimTreeFindFile<cr>", desc = "ツリーで現在のファイルを表示" },
   },
+  init = function()
+    -- `nvim <ディレクトリ>` で起動されたときは、遅延ロードを待たずに
+    -- その場で nvim-tree を読み込む (hijack_netrw を効かせるため)。
+    if vim.fn.argc(-1) == 1 then
+      local arg = vim.fn.argv(0)
+      local stat = (vim.uv or vim.loop).fs_stat(arg)
+      if stat and stat.type == "directory" then
+        require("lazy").load({ plugins = { "nvim-tree.lua" } })
+      end
+    end
+  end,
   opts = {
     hijack_netrw = true,
     view = { width = 34 },

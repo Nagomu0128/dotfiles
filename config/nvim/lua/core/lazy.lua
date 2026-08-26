@@ -51,7 +51,9 @@ require("lazy").setup({
         "tohtml",
         "tutor",
         "zipPlugin",
-        "netrwPlugin",
+        -- netrwPlugin は外さない。nvim-tree は遅延ロードなので、
+        -- ディレクトリを開いた時点でまだ読み込まれていないことがある。
+        -- netrw を殺すとその瞬間に「何も表示されない空バッファ」になる。
       },
     },
   },
