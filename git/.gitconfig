@@ -1,0 +1,7 @@
+[user]
+	name = nagomu
+	email = kyoshidk@gmail.com
+[ghq]
+	root = /Users/kazuya/dev
+[core]
+	excludesfile = /Users/kazuya/.gitignore_global
