@@ -10,7 +10,7 @@ map('n', '<leader>q', '<cmd>quit<CR>', { desc = '終了' })
 -- バッファ移動
 map('n', '<S-l>', '<cmd>bnext<CR>', { desc = '次のバッファ' })
 map('n', '<S-h>', '<cmd>bprevious<CR>', { desc = '前のバッファ' })
-map('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'バッファを閉じる' })
+map('n', '<leader>bd', '<cmd>Bdelete<CR>', { desc = 'バッファを閉じる' })
 
 -- 分割ウィンドウ作成 (ペイン移動/リサイズは smart-splits.nvim が Ctrl+hjkl / Opt+hjkl を担当)
 map('n', '<leader>sv', '<C-w>v', { desc = '垂直分割' })
