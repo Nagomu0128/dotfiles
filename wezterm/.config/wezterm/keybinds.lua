@@ -169,7 +169,9 @@ function M.apply_to_config(config)
   local ok, smart_splits = pcall(wezterm.plugin.require, 'https://github.com/mrjones2014/smart-splits.nvim')
   if ok then
     smart_splits.apply_to_config(config, {
-      direction_keys = { 'h', 'j', 'k', 'l' },
+      -- macOS では Option+文字 が特殊文字合成に使われ ALT 修飾のバインドが
+      -- 拾えないことがあるため、レイアウトに依存しない物理キーコードで指定する
+      direction_keys = { 'phys:h', 'phys:j', 'phys:k', 'phys:l' },
       modifiers = {
         move = 'CTRL',
         resize = 'META',
