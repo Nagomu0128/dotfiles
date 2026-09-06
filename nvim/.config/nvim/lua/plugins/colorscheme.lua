@@ -22,15 +22,21 @@ return {
     require('catppuccin').setup(opts)
     vim.cmd.colorscheme('catppuccin-mocha')
 
-    -- NeoTreeDotfile は neo-tree.nvim 本体が #626262 (暗い灰色) にハードコードしており
-    -- Catppuccin 側では上書きされないため、明示的に明るい色を指定する
-    local function brighten_neotree_dotfile()
+    local function apply_overrides()
+      -- NeoTreeDotfile は neo-tree.nvim 本体が #626262 (暗い灰色) にハードコードしており
+      -- Catppuccin 側では上書きされないため、明示的に明るい色を指定する
       vim.api.nvim_set_hl(0, 'NeoTreeDotfile', { fg = '#edf0fa' })
+
+      -- ホバーなどのフローティングウィンドウは、WezTerm の透過が薄い色だと
+      -- デスクトップの背景と混ざって輪郭が分からなくなる。crust (最も暗い色) を敷いて
+      -- 透過の影響を受けにくい安定した濃さの板にし、青系の枠線で境界をはっきりさせる
+      vim.api.nvim_set_hl(0, 'NormalFloat', { fg = '#cdd6f4', bg = '#11111b' })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#89b4fa', bg = '#11111b' })
     end
     vim.api.nvim_create_autocmd('ColorScheme', {
       pattern = 'catppuccin-mocha',
-      callback = brighten_neotree_dotfile,
+      callback = apply_overrides,
     })
-    brighten_neotree_dotfile()
+    apply_overrides()
   end,
 }
