@@ -56,6 +56,18 @@ M.keys = {
     { key = 'k', mods = 'SUPER', action = act.ClearScrollback 'ScrollbackOnly' },
 
     ------------------------------------------------------------------
+    -- ghq × ripgrep 横断検索 (~/.zshrc の ghq-grep 関数を新規タブで起動)
+    -- nvim はターミナル内で Cmd 修飾キーを受け取らないため衝突なし
+    ------------------------------------------------------------------
+    {
+      key = 'g',
+      mods = 'SUPER',
+      action = act.SpawnCommandInNewTab {
+        args = { '/bin/zsh', '-i', '-c', 'ghq-grep; exec zsh -i' },
+      },
+    },
+
+    ------------------------------------------------------------------
     -- その他
     ------------------------------------------------------------------
     { key = 'p', mods = 'SUPER|SHIFT', action = act.ActivateCommandPalette },
