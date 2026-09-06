@@ -63,7 +63,7 @@ M.keys = {
       key = 'g',
       mods = 'SUPER',
       action = act.SpawnCommandInNewTab {
-        args = { '/bin/zsh', '-i', '-c', 'ghq-grep; exec zsh -i' },
+        args = { '/bin/zsh', '-l', '-i', '-c', 'ghq-grep; exec zsh -i' },
       },
     },
 
