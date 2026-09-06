@@ -12,6 +12,7 @@ return {
       telescope = { enabled = true },
       native_lsp = { enabled = true },
       neotree = true,
+      bufferline = true,
       which_key = true,
       indent_blankline = { enabled = true },
       mason = true,
